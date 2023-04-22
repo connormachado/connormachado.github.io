@@ -6,7 +6,7 @@ function makeNote(color){
     newButton = document.createElement("BUTTON");
     newButton.id = "firstID"
     newButton.text = "hello World?"
-    document.getElementById("#firstID").classList.add('stickyNote')
+    document.getElementById("firstID").classList.add('stickyNote')
     
     newButton.innerHTML = '<img src=sn.png />';
 
