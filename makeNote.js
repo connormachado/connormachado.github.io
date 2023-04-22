@@ -7,10 +7,10 @@ function makeNote(color){
     newButton.id = "firstID"
     newButton.textContent = "Hello World?";
     newButton.classList.add('stickyNote')
-    newButton.classList.add('buttonGreen')
+    newButton.classList.add('buttonTheo')
 
-    if (color = "Green"){
-        newButton.classList.add('buttonGreen')
+    if (color = "Theo"){
+        newButton.classList.add('buttonTheo')
     }else if(color = "Blue"){
         newButton.classList.add('buttonBlue')
     }
