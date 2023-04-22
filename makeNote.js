@@ -6,7 +6,8 @@ function makeNote(color){
     x = document.createElement("BUTTON");
     x.id = "firstID"
     x.text = "hello World?"
-    x.class = "stickyNote"
+    document.getElementById("#firstID").classList.add('stickyNote') 
+
 
     tr.appendChild(x)
 
