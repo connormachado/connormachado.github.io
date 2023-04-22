@@ -4,7 +4,9 @@ function makeNote(color){
 
 
     x = document.createElement("BUTTON");
-    x.onclick = this.changeText("Hello World!")
+    x.id = "firstID"
+    x.text = "hello World?"
+    //x.onclick = this.changeText("Hello World!")
 
     tr.appendChild(x)
 
