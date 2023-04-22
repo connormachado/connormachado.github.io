@@ -16,14 +16,14 @@ class stickyNote{
 
 
     makeNote(color){
-        var myTable = document.getElementById("QuoteWall");
+        myTable = document.getElementById("QuoteWall");
         tr = myTable.insertRow(-1);
 
 
-        var x = document.createElement("BUTTON");
+        x = document.createElement("BUTTON");
         x.onclick = this.changeText("Hello World!")
 
-        x = tr.insertCell(-1);
+        tr.appendChild(x)
 
         x.width = 50;
         x.height = 50;
