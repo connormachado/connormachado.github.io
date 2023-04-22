@@ -17,5 +17,5 @@ function randomQuote(){
 
     keys = Object.keys(quoteList);
     newText = quoteList[keys[Math.floor(keys.length * Math.random())]];
-    StickyNote.textContent = toString(newText);
+    StickyNote.textContent = toString(newText.Quote);
 }
