@@ -16,18 +16,12 @@
 .buttonOrange {background-color: #e09d20;} /* Orange */
 
 .stickyNote {
-    min-width: 1500px;
-    max-width: 1500px;
-    min-height: 1500px;
-    max-height: 1500px;
+    min-width: 1000px;
+    max-width: 1000px;
+    min-height: 755px;
+    max-height: 755px;
     margin: 0;
     position: absolute;
-    left: 20%;
-    font-size: 130px;
+    left: 15%;
+  font-size: 130px;
 }
-
-
-.text-center {
-    text-align: center;
-  }
-
