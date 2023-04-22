@@ -5,7 +5,7 @@ function makeNote(color){
 
     newButton = document.createElement("BUTTON");
     newButton.id = "firstID"
-    newButton.text = "hello World?"
+    newButton.textContent = "Hello World?";
     newButton.classList.add('stickyNote')
     newButton.classList.add('buttonGreen')
 

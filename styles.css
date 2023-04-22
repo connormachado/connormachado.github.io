@@ -25,6 +25,8 @@
     font-size: 32px;
     margin: 4px 2px;
     cursor: pointer;
-    width: 50;
-    height: 50;
+    min-width: 50;
+    min-height: 50;
+    height: 60%;
+    width: 60%
 }
