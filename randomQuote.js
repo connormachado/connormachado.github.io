@@ -11,6 +11,30 @@ function randomQuote(){
         {
             firstname: "Theo_Dwyer", 
             Quote: "these dudes must be virgins"
+        },
+        {
+            firstname: "Mady_Ockner", 
+            Quote: "even i'm not aware of my own thoughts"
+        },
+        {
+            firstname: "Logan_Ockner", 
+            Quote: "did you say it smells like boob in here?"
+        },
+        {
+            firstname: "Theo_Dwyer", 
+            Quote: "connor i fucked up there's a soybean in the room"
+        },
+        {
+            firstname: "Jack_Gibberd", 
+            Quote: "there's a really cool book called bomb"
+        },
+        {
+            firstname: "Braeden", 
+            Quote: "i had a half meal of 5 vending machine snacks"
+        },
+        {
+            firstname: "Theo_Dwyer", 
+            Quote: "who would've thought paying attention helped so much"
         }
     ]
 
