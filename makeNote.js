@@ -7,9 +7,13 @@ function makeNote(color){
     newButton.id = "firstID"
     newButton.text = "hello World?"
     newButton.classList.add('stickyNote')
-    
-    newButton.innerHTML = '<img src=sn.png />';
+    newButton.classList.add('buttonGreen')
 
+    if (color = "Green"){
+        newButton.classList.add('buttonGreen')
+    }else if(color = "Blue"){
+        newButton.classList.add('buttonBlue')
+    }
 
     tr.appendChild(newButton)
 }
