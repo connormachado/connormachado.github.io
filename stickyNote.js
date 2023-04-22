@@ -16,15 +16,17 @@ class stickyNote{
 
 
     makeNote(color){
-        var canvas = document.getElementById("QuoteWall");
-        if (canvas.getContext){
-            var ctx = canvas.getContext('2d');
-            ctx.fillStyle = color;    
-            var x = document.createElement("BUTTON");
-            x.onclick = this.changeText("Hello World!")
-            x.width = 50;
-            x.height = 50;
-        }
+        var myTable = document.getElementById("QuoteWall");
+        tr = myTable.insertRow(-1);
+
+
+        var x = document.createElement("BUTTON");
+        x.onclick = this.changeText("Hello World!")
+
+        x = tr.insertCell(-1);
+
+        x.width = 50;
+        x.height = 50;
     }
 
 }
