@@ -11,8 +11,5 @@ function makeNote(color){
     newButton.innerHTML = '<img src=sn.png />';
 
 
-    tr.appendChild(x)
-
-    x.width = 50;
-    x.height = 50;
+    tr.appendChild(newButton)
 }
