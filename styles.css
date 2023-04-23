@@ -19,6 +19,9 @@
 .buttonYellow {background-color: #e2ea43;}
 .buttonPink {background-color: #ea43dc;}
 
+/* Color for add sticky note button */
+.buttonAddBlue {background-color: #008CBA;}
+
 /* Sticky note presets to center it */
 .stickyNote {
     min-width: 1000px;

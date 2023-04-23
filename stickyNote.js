@@ -3,5 +3,6 @@ class stickyNote{
         this.height = 200;
         this.width = 200;
         this.text = quote;
+        
       }
 }

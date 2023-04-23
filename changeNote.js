@@ -69,7 +69,7 @@ function changeNote(){
     //NEW IDEA
     //Change addNote's color randomly too, make them opposite though
 
-    
+
     function resetColor(oldClass, newClass){
         currentNote = document.getElementById("StickyNote");
         currentNote.classList.remove(oldClass);
@@ -92,4 +92,7 @@ function changeNote(){
     }else if ((document.getElementsByClassName("buttonPink")).length != 0){
         resetColor("buttonPink", "buttonBlue");
     }
+
+
+
 }
