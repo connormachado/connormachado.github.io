@@ -30,3 +30,11 @@
     left: 15%;
     font-size: 80px;
 }   
+
+.addButton {
+    font-size: 40px;
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 200px;
+    max-height: 200px;
+}
