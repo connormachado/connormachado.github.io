@@ -57,13 +57,13 @@ function randomQuote(){
     }
     
     // If the returned list is not empty then the current sticky note is that color
-    if( (document.getElementsByClassName("buttonBlue")).length() != 0){
+    if( (document.getElementsByClassName("buttonBlue")).length != 0){
         resetColor("buttonBlue", "buttonPurple");
-    }else if ((document.getElementsByClassName("buttonPurple")).length() != 0){
+    }else if ((document.getElementsByClassName("buttonPurple")).length != 0){
         resetColor("buttonPurple", "buttonGreen");
-    }else if ((document.getElementsByClassName("buttonGreen")).length() != 0){
+    }else if ((document.getElementsByClassName("buttonGreen")).length != 0){
         resetColor("buttonGreen", "buttonOrange");
-    }else if ((document.getElementsByClassName("buttonOrange")).length() != 0){
+    }else if ((document.getElementsByClassName("buttonOrange")).length != 0){
         resetColor("buttonOrange", "buttonBlue");
     }
 
