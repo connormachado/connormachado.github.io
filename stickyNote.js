@@ -1,17 +1,7 @@
 class stickyNote{
-    constructor() {
+    constructor(quote) {
         this.height = 200;
         this.width = 200;
-        this.text = 'Creation Time'; //Maybe have random inspirational quotes 
-        this.color = "blue";
+        this.text = quote;
       }
-
-    changeText(newText){
-        this.text = newText
-    }
-
-    changeColor(newColor){
-        this.color = newColor;
-    }
-
 }
