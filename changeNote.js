@@ -40,6 +40,8 @@ function changeNote(){
             Quote: "call me ed sheeran the way i'm ginger"},
         {   author: "Unknown_Unknown",
             Quote: "racist?... no, RACIST racist"},
+        {   Author: "JoJo_Goldin",
+            Quote: "nobody's letting me be antisemitic anymore and it's making me sad"}
 
     ]
 
