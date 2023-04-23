@@ -1,4 +1,4 @@
-function randomQuote(){
+function changeNote(){
     const quoteList = [
         {   firstname: "Theo_Dwyer", 
             Quote: "i cut through a penny once, yea with sciccors"},
@@ -37,19 +37,32 @@ function randomQuote(){
         {   firstname: "Connor_Machado", 
             Quote: "genetic disaster-piece"},
         {   firstname: "Mady_Ockner",
-            Quote: "call me ed sheeran the way i'm ginger"}
+            Quote: "call me ed sheeran the way i'm ginger"},
+        {   firstname: "Unknown_Unknown",
+            Quote: "racist?... no, RACIST racist"}
     ]
 
-    // Blue -> Purple
-    // Purple -> Green
-    // Green -> Orange
-    // Orange -> Blue
+    ///////////////////////////////////////
+    //Change the quote in the sticky note//
+    ///////////////////////////////////////
 
     keys = Object.keys(quoteList);
     newText = quoteList[keys[Math.floor(keys.length * Math.random())]];
     StickyNote.textContent = newText.Quote;
 
-    
+    ///////////////////////////////////////
+    //Change the color of the sticky note//
+    ///////////////////////////////////////
+
+    // Color linked list
+    // Blue -> Purple
+    // Purple -> Green
+    // Green -> Orange
+    // Orange -> Red
+    // Red -> Yellow
+    // Yellow -> Pink
+    // Pink -> Blue
+
     function resetColor(oldClass, newClass){
         currentNote = document.getElementById("StickyNote");
         currentNote.classList.remove(oldClass);
@@ -64,8 +77,12 @@ function randomQuote(){
     }else if ((document.getElementsByClassName("buttonGreen")).length != 0){
         resetColor("buttonGreen", "buttonOrange");
     }else if ((document.getElementsByClassName("buttonOrange")).length != 0){
-        resetColor("buttonOrange", "buttonBlue");
+        resetColor("buttonOrange", "buttonRed");
+    }else if ((document.getElementsByClassName("buttonRed")).length != 0){
+        resetColor("buttonRed", "buttonYellow");
+    }else if ((document.getElementsByClassName("buttonYellow")).length != 0){
+        resetColor("buttonYellow", "buttonPink");
+    }else if ((document.getElementsByClassName("buttonPink")).length != 0){
+        resetColor("buttonPink", "buttonBlue");
     }
-
-    
 }
