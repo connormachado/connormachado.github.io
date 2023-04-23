@@ -35,10 +35,37 @@ function randomQuote(){
         {   firstname: "Connor_Machado", 
             Quote: "i like making easy things hard, makes them more worth it"},
         {   firstname: "Connor_Machado", 
-            Quote: "genetic disaster-piece"}
+            Quote: "genetic disaster-piece"},
+        {   firstname: "Mady_Ockner",
+            Quote: "call me ed sheeran the way i'm ginger"}
     ]
+
+    // Blue -> Purple
+    // Purple -> Green
+    // Green -> Orange
+    // Orange -> Blue
 
     keys = Object.keys(quoteList);
     newText = quoteList[keys[Math.floor(keys.length * Math.random())]];
     StickyNote.textContent = newText.Quote;
+
+    currentNote = document.getElementById("Sticky Note");
+
+    function resetColor(oldClass, newClass){
+        currentNote.classList.remove(oldClass);
+        currentNote.classList.remove(newClass);
+    }
+    
+    // If the returned list is not empty then the current sticky note is that color
+    if( (document.getElementsByClassName("buttonBlue")).length() != 0){
+        resetColor("buttonBlue", "buttonPurple");
+    }else if ((document.getElementsByClassName("buttonPurple")).length() != 0){
+        resetColor("buttonPurple", "buttonGreen");
+    }else if ((document.getElementsByClassName("buttonGreen")).length() != 0){
+        resetColor("buttonGreen", "buttonOrange");
+    }else if ((document.getElementsByClassName("buttonOrange")).length() != 0){
+        resetColor("buttonOrange", "buttonBlue");
+    }
+
+    
 }
