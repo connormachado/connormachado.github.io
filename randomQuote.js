@@ -49,11 +49,11 @@ function randomQuote(){
     newText = quoteList[keys[Math.floor(keys.length * Math.random())]];
     StickyNote.textContent = newText.Quote;
 
-    currentNote = document.getElementById("Sticky Note");
-
+    
     function resetColor(oldClass, newClass){
+        currentNote = document.getElementById("StickyNote");
         currentNote.classList.remove(oldClass);
-        currentNote.classList.remove(newClass);
+        currentNote.classList.add(newClass);
     }
     
     // If the returned list is not empty then the current sticky note is that color
