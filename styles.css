@@ -33,8 +33,16 @@
 
 .buttonAdd {
     font-size: 40px;
-    min-width: 400px;
-    max-width: 400px;
-    min-height: 200px;
-    max-height: 200px;
+    min-width: 180px;
+    max-width: 180px;
+    min-height: 180px;
+    max-height: 180px;
+    position: absolute;
+}
+
+.inputButton{
+    font-size: 40px;
+    min-width: 150px;
+    max-width: 150px;
+    position: absolute;
 }
