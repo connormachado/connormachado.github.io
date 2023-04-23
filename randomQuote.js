@@ -38,7 +38,6 @@ function randomQuote(){
             Quote: "genetic disaster-piece"}
     ]
 
-
     keys = Object.keys(quoteList);
     newText = quoteList[keys[Math.floor(keys.length * Math.random())]];
     StickyNote.textContent = newText.Quote;
