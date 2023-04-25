@@ -45,6 +45,8 @@ function changeNote(){
 
     ]
 
+    testInt = 0;
+
     ///////////////////////////////////////
     //Change the quote in the sticky note//
     ///////////////////////////////////////
@@ -93,6 +95,7 @@ function changeNote(){
         resetColor("buttonPink", "buttonBlue");
     }
 
-
+    testInt++;
+    console.log(testInt);
 
 }
