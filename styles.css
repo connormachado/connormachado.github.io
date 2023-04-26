@@ -20,3 +20,14 @@ border: 1px solid black;
 .center {
     text-align: center;
 }
+
+.image{
+    max-width: 450;
+}
+
+
+@media (max-width: 400px){
+    .image{
+        max-width: 150;
+    }
+}
