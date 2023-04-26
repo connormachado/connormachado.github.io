@@ -16,6 +16,17 @@
     max-height: 200px;
     margin: 0;
     position: absolute;
-    left: 15%;
     font-size: 80px;
+    background-color: aquamarine;
+}
+
+.buttonRight{
+    min-width: 500px;
+    max-width: 500px;
+    min-height: 200px;
+    max-height: 200px;
+    margin: 0;
+    position: absolute;
+    font-size: 80px;
+    background-color: aqua;
 }
