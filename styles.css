@@ -1,32 +1,22 @@
 .button {
-    border: none;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    display: inline;
+    margin: 30px;
+    padding: 30px 35px;
+    font: 300 150% langdon;
+    /* background: transparent; */
+    border: 3px solid black;
     cursor: pointer;
+  } 
+
+
+button:hover {
+    border: 1px solid #8b8b8b;
+    }
+  
+button:active {
+border: 1px solid black;
 }
 
-.buttonLeft{
-    min-width: 500px;
-    max-width: 500px;
-    min-height: 200px;
-    max-height: 200px;
-    margin: 0;
-    position: absolute;
-    font-size: 80px;
-    background-color: aquamarine;
-}
-
-.buttonRight{
-    min-width: 500px;
-    max-width: 500px;
-    min-height: 200px;
-    max-height: 200px;
-    margin: 0;
-    position: absolute;
-    font-size: 80px;
-    background-color: aqua;
+.center {
+    text-align: center;
 }

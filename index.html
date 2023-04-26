@@ -7,20 +7,37 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
+    <header class="center">
         <h1>
             FaceMash
         </h1>
     </header>
 
-    <div>
-        <td>
-            <button type="image" src="/oldFiles/oldImages/sn.png" id="contOne" class="button buttonLeft"></button>
-        </td>
-        <td>
-            <button type="image" src="/oldFiles/oldImages/stickyNote.png" id="contTwo" class="button buttonRight"></button>
-        </td>
+
+    <div class="center">
+        <img 
+                id = "picture1"
+                src = "/images/connor.png"
+                onload="this.onload=null; this.src=initialImage();" 
+                alt="Contestant 1" 
+                usemap="#picture1" 
+                style="max-width: 450;"
+            >
+
+            <img 
+                id = "picture2"
+                src= "/images/jack.png"
+                onload= "this.onload=null; this.src=initialImage()"
+                alt="Contestant 2" 
+                usemap="#picture2" 
+                style="max-width: 450;"
+            >
+    </div>
+    <div class="center">
+        <button src="/images/connor.png" id="contOne" class="button" onclick="contOne()">hello</button>
+        <button src="/images/jack.png" id="contTwo" class="button" onclick="contTwo()">beans</button>
     </div>
 
+    
 </body>
 </html>
