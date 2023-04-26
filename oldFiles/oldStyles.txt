@@ -1,0 +1,50 @@
+.button {
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+/* Colors for sticky notes */
+.buttonBlue {background-color: #008CBA;}
+.buttonPurple {background-color: #8941d1;} 
+.buttonGreen {background-color: #4CAF50;} 
+.buttonOrange {background-color: #e09d20;} 
+.buttonRed {background-color: #e0204d;}
+.buttonYellow {background-color: #e2ea43;}
+.buttonPink {background-color: #ea43dc;}
+
+/* Color for add sticky note button */
+.buttonAddBlue {background-color: #008CBA;}
+
+/* Sticky note presets to center it */
+.stickyNote {
+    min-width: 1000px;
+    max-width: 1000px;
+    min-height: 755px;
+    max-height: 755px;
+    margin: 0;
+    position: absolute;
+    left: 15%;
+    font-size: 80px;
+}   
+
+.buttonAdd {
+    font-size: 40px;
+    min-width: 180px;
+    max-width: 180px;
+    min-height: 180px;
+    max-height: 180px;
+    position: absolute;
+}
+
+.inputButton{
+    font-size: 40px;
+    min-width: 150px;
+    max-width: 150px;
+    position: absolute;
+}
