@@ -6,15 +6,16 @@
     /* background: transparent; */
     border: 3px solid black;
     cursor: pointer;
-  } 
+    min-width: 200px;
+} 
 
 
 button:hover {
     border: 1px solid #8b8b8b;
-    }
+}
   
 button:active {
-border: 1px solid black;
+    border: 1px solid black;
 }
 
 .center {
@@ -24,7 +25,6 @@ border: 1px solid black;
 .image{
     max-width: 450;
 }
-
 
 /* @media (max-width: 400px){
     .image{
