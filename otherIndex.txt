@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facemash</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="updateFunc.js"></script>
+</head>
+<body>
+    <header class="center">
+        <h1>
+            FaceMash
+        </h1>
+    </header>
+
+
+    <div class="center">
+        <img 
+                id = "picture1"
+                src = "/images/connor.png"
+                alt="Contestant 1" 
+                class="image"
+            >
+
+            <img 
+                id = "picture2"
+                src= "/images/jack.png"
+                alt="Contestant 2" 
+                class="image"  
+            >
+    </div>
+
+
+    <div class="center">
+        <button src="/images/connor.png" id="one" class="button" onclick="updateFunc('one')">Connor</button>
+        <button src="/images/jack.png" id="two" class="button" onclick="updateFunc('two')">Jack</button>
+    </div>
+    
+</body>
+</html>
