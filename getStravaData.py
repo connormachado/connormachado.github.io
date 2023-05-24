@@ -6,7 +6,7 @@ urllib3.disable_warnings()
 
 #Variables for filtering
 desired_city = "Napa"
-desired_activity_type = "Ride"
+desired_activity_type = "Run"
 
 
 #Strava API crap

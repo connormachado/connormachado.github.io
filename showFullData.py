@@ -190,7 +190,14 @@ activity_to_plot = "Run"
 total_route_data = getPlotData(city_to_plot, activity_to_plot, 353)
 
 #Centering coordinates
-gmap = gmplot.GoogleMapPlotter(41.68569, -73.89769, 14, apikey=apikey)
+if city_to_plot == "PTown":
+    coord_lat = 41.68569
+    coord_long = -73.89769
+elif city_to_plot == "Napa":
+    coord_lat = 38.29535
+    coord_long = -122.29778
+
+gmap = gmplot.GoogleMapPlotter(coord_lat, coord_long, 14, apikey=apikey)
 
 
 # Outline the runs
