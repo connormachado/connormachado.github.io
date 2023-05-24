@@ -170,3 +170,6 @@ for activity in filtered_return_list:
     individual_polyline_return_data.append(new_route)
 
 print(individual_polyline_return_data)
+
+print(f"Map drawn with {desired_activity_type} activities from {desired_city}")
+print("\nWebsite will update shortly...")
