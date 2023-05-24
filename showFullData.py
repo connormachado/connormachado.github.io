@@ -185,7 +185,9 @@ def getPlotData(city, activity_type, per_page_requests):
 apikey = 'AIzaSyDHVH624Z46hGWgh3PZNMQ8CmKF91CJkdE' # (your API key here)
 
 #Get the strava data using getStravaData
-total_route_data = getPlotData("Napa", "Run", 353)
+city_to_plot = "Napa"
+activity_to_plot = "Run"
+total_route_data = getPlotData(city_to_plot, activity_to_plot, 353)
 
 #Centering coordinates
 gmap = gmplot.GoogleMapPlotter(41.68569, -73.89769, 14, apikey=apikey)
@@ -197,7 +199,10 @@ for element in total_route_data:
     gmap.polygon(*run_outline, color='cornflowerblue', edge_width=5, face_color="FFC0CB", face_alpha=0)
 
 # Draw the map to an HTML file:
-gmap.draw('map.html')
+gmap.draw('index.html')
+
+print(f"Map drawn with {activity_to_plot} activities from {city_to_plot}")
+print("\nWebsite will update shortly...")
 
 
 '''
