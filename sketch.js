@@ -2,6 +2,7 @@ function setup() {
     createCanvas(720, 400);
     background(230);
     strokeWeight(2);
+    ellipse(50,50,80,80);
   }
   
   function draw() {
