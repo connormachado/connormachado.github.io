@@ -203,7 +203,7 @@ gmap = gmplot.GoogleMapPlotter(coord_lat, coord_long, 14, apikey=apikey)
 # Outline the runs
 for element in total_route_data:
     run_outline = zip(*element)
-    gmap.polygon(*run_outline, color='cornflowerblue', edge_width=5, face_color="FFC0CB", face_alpha=0)
+    gmap.polygon(*run_outline, color='cornflowerblue', edge_width=2, face_color="FFC0CB", face_alpha=0)
 
 # Draw the map to an HTML file:
 gmap.draw('index.html')
