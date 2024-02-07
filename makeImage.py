@@ -2,31 +2,27 @@ from PIL import Image
 import numpy as np
 
 
-# xPos = [206, 299, 328, 273, 206]
-# yPos = [625, 544, 615, 663, 625]
+corners = [(7.69921875, 126.66015625), (750.73828125, 141.1484375), (7.3515625, 1198.34375), (749.37109375, 1214.1796875)]
 
-corners = [(5.71484375, 81.31640625), (751.25, 81.25), (1.828125, 1210.9765625), (751.4296875, 1222.9296875)]
-
-allShapes = [[175.8828125, 270.1796875, 301.3125, 247.7734375], [595.4921875, 513.1796875, 585.79296875, 634.08203125],
-             [316.3125, 309.5625, 350.3125, 329.140625], [456.17578125, 496.3828125, 509.42578125, 484.98046875], 
-             [380.48046875, 391.8203125, 418.23046875, 426.11328125, 420.19140625, 399.125], [415.40234375, 390.2578125, 387.9375, 403.6875, 425.125, 429.0625], 
-             [267.98046875, 292.84375, 290.078125], [488.36328125, 475.76171875, 504.515625]]
+allShapes = [[60.87890625, 130.15234375, 149.43359375, 114.0, 76.80078125], [978.98046875, 947.5078125, 996.33203125, 1021.39453125, 1024.87109375], 
+             [177.73046875, 271.05859375, 299.01171875, 247.390625], [592.22265625, 512.8984375, 585.53515625, 631.0234375], 
+             [465.16015625, 497.03125, 491.41796875], [324.5234375, 311.7890625, 333.83203125], 
+             [683.44921875, 688.765625, 708.9609375, 716.92578125, 705.72265625], [1004.76171875, 994.62890625, 987.5, 994.05859375, 1004.8125], 
+             [421.4296875, 448.71875, 442.66015625, 407.5390625], [739.2109375, 757.34765625, 770.06640625, 751.55859375]]
 
 
-#Used to get the offset correct
-# Rounds the floats to integers
+# Rounds elems in list "corners" from floats to integers
 for elem in range(len(corners)):
-    corners[elem][0] = int(round(corners[elem][0], 0))
-    corners[elem][1] = int(round(corners[elem][1], 0))
+    corners[elem] = ( int(round(corners[elem][0], 0)), 
+                      int(round(corners[elem][1], 0)) )
 
-print(corners)
 
 # Find min and max for each x and y points
 xMin = min( corners[0][0], corners[2][0] )
 xMax = min( corners[1][0], corners[3][0] )
-
 yMin = min( corners[0][1], corners[1][1] )
 yMax = min( corners[2][1], corners[3][1] )
+
 
 # Width and height of the given canvas/photo
 width = xMax - xMin
@@ -49,56 +45,53 @@ def addHold(xPos, yPos, img):
         y1 = yPos[iteration + 1]
         y0 = yPos[iteration]
 
-        dx = x1 - x0
-        dy = y1 - y0
-        m = dy / dx
+        #Vectors from A to B
+        vx = x1 - x0
+        vy = y1 - y0
 
-        # Makes sure that the for loop can run i.e. -> start < stop
-        if x1 < x0: 
-            tempX = x1
-            x1 = x0
-            x0 = tempX
+        step = 50
+        for iter in range(step):
+            x = x0 + (vx * iter / step)
+            y = y0 + (vy * iter / step)
 
-            tempY = y1
-            y1 = y0
-            y0 = tempY
+            x = int(round(x,0))
+            y = int(round(y,0))
 
-
-        for x in range(x0, x1):
-            y = (m * (x - x0)) + y0
-            y = int(round(y, 0))
-            x = int(round(x, 0))
+            img[y][x] = (0, 0, 0)
 
 
             #Add "Thickness"
             # for a in range(-1, 1):
             #     for b in range(-1, 1):
-            #         img[x+a][y+b] = (0, 0, 0)
+            #         img[y+a][x+b] = (0, 0, 0)
 
 
-            #Bruh idk how these are different
-            img[x][y+1] = (0, 0, 0)
-            img[x][y] = (0, 0, 0)
-            img[x][y-1] = (0, 0, 0)        
-            img[x-1][y+1] = (0, 0, 0)
-            img[x-1][y] = (0, 0, 0)
-            img[x-1][y-1] = (0, 0, 0)        
-            img[x+1][y+1] = (0, 0, 0)
-            img[x+1][y] = (0, 0, 0)
-            img[x+1][y-1] = (0, 0, 0)
+            #Bruh idk how these are different but bottom one is bolder
+            img[y][x+1] = (0, 0, 0)
+            img[y][x] = (0, 0, 0)
+            img[y][x-1] = (0, 0, 0)        
+            img[y-1][x+1] = (0, 0, 0)
+            img[y-1][x] = (0, 0, 0)
+            img[y-1][x-1] = (0, 0, 0)        
+            img[y+1][x+1] = (0, 0, 0)
+            img[y+1][x] = (0, 0, 0)
+            img[y+1][x-1] = (0, 0, 0)
     return img
 
 
 # Clean and then draw holds
 # Rounds all floats to integers || Adds one extra point to end of xPos and yPos
+# Also accounts for offset
+subtractor = yMin
 for elemList in range( len(allShapes) ):
+    if elemList%2 == 0:
+        subtractor = xMin
+    else:
+        subtractor = yMin
+
     for elem in range( len(allShapes[elemList]) ):
-        allShapes[elemList][elem] = int( round(allShapes[elemList][elem], 0) )
+        allShapes[elemList][elem] = int( round(allShapes[elemList][elem], 0) ) - subtractor
     allShapes[elemList].append(allShapes[elemList][0])
-
-
-#For testing delete later
-print(allShapes)
 
 
 # Goes through allShapes and adds each hold to the image
