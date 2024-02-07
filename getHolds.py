@@ -37,6 +37,8 @@ def on_release(key):
         
         #Print allShapes to terminal
         print("allShapes || ", allShapes)
+        print("\n")
+        print("corners || ", cornerBoundary)
         return False
 
 
