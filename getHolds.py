@@ -30,8 +30,9 @@ def on_press(key):
         print("Special Key || {0}".format(key))
 
 
-
 def on_release(key):
+    
+    #Use this as the finalSave button
     if key == keyboard.Key.esc:
         # This will be the last click, to print out the full set of holds
         # The other two will have autosave stuff in order to be able to map
@@ -39,10 +40,11 @@ def on_release(key):
         #this AND the other autosave function should have another file that will join the 
         # two lists into one mega list
 
-        #Use this as the finalSave button
+        
         #Print allShapes to terminal
-        print(allShapes)
+        print("allShapes || ", allShapes)
         return False
+
 
 
 def on_click(x, y, button, pressed): #Print rounded coordinates (p) store float coordinates (x,y)
@@ -61,31 +63,34 @@ def on_click(x, y, button, pressed): #Print rounded coordinates (p) store float 
             print("X || Y  =  ", p.x, p.y)
 
 
-            if corners == 4:
+            if (corners == 4) or (corners == 5):
                 xPos.append(x)
                 yPos.append(y)
-                print("X-Pos: ", xPos)
+                print("X-Positions: ", xPos)
                 print("Y-Positions: ", yPos)
 
 
             if corners == 0:
-                print("Top Left")
+                print("Top Left Done")
                 corners += 1
                 cornerBoundary.append( (x, y) )
+            elif corners == 4: #Stops corners list printing after 4
+                corners += 1
             elif corners == 1:
-                print("Top Right")
+                print("Top Right Done")
                 corners += 1
                 cornerBoundary.append( (x, y) )
             elif corners == 2:
-                print("Bottom Left")
+                print("Bottom Left Done")
                 corners += 1
                 cornerBoundary.append( (x, y) )
             elif corners == 3:
-                print("Bottom Right")
+                print("Bottom Right Done")
                 corners += 1
                 cornerBoundary.append( (x, y) )
-                
-            if corners < 5: #Show corners
+
+
+            if corners != 5: #Show corners
                 print("Corners: ", cornerBoundary)
                 
             print("\n")
@@ -103,8 +108,9 @@ def on_click(x, y, button, pressed): #Print rounded coordinates (p) store float 
             if(shapeCount % 5) == 0: #Every 5 saves, can change later
                 print("All Shapes AutoSave: ", allShapes)
 
-            allShapes.append( xPos )
-            allShapes.append( yPos )
+            allShapes.append( xPos.copy() )
+            allShapes.append( yPos.copy() )
+            
             xPos.clear()
             yPos.clear()
 
