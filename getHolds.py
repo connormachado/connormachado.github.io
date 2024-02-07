@@ -1,15 +1,19 @@
-from PIL import Image
 import pyautogui
+import numpy as np
+
+from PIL import Image
 from pynput.mouse import Listener as mouseListener
 from pynput.keyboard import Listener as keyboardListener
 from pynput import mouse
 from pynput import keyboard
 
+import makeImage
+
 
 
 allShapes = [] #The complete list of shapes allShapes = [x,y...]  where x&y = type.Lists
-cornerBoundary = [] #The list for the cornerBoundaries cornerBoundary = [(x,y)...] where x&y = type.Floats
-corners = 0 #Incerement for the first 4 clicks. Then send the coordinates to xPos and yPos
+corners = [] #The list for the cornerBoundaries corners = [(x,y)...] where x&y = type.Floats
+cornerNumber = 0 #Incerement for the first 4 clicks. Then send the coordinates to xPos and yPos
 shapeCount = 0 #Once the sinceSave gets to 5 we print out allShapes in order to "autosave"
 
 
@@ -38,13 +42,16 @@ def on_release(key):
         #Print allShapes to terminal
         print("allShapes || ", allShapes)
         print("\n")
-        print("corners || ", cornerBoundary)
+        print("corners || ", corners)
         return False
+    elif key == keyboard.Key.cmd:
+        print("Drawing all shapes...")
+        makeImage.makeMyImage(corners, allShapes)
 
 
 
 def on_click(x, y, button, pressed): #Print rounded coordinates (p) store float coordinates (x,y)
-    global corners, shapeCount
+    global cornerNumber, shapeCount
 
     if pressed:
         #(1)
@@ -54,33 +61,33 @@ def on_click(x, y, button, pressed): #Print rounded coordinates (p) store float 
             p = pyautogui.position()
             print("X || Y  =  ", p.x, p.y)
 
-            if corners == 4:
+            if cornerNumber == 4:
                 xPos.append(x)
                 yPos.append(y)
                 print("X-Positions: ", xPos)
                 print("Y-Positions: ", yPos)
 
-            if corners == 0:
+            if cornerNumber == 0:
                 print("Top Left Done")
-                corners += 1
-                cornerBoundary.append( (x, y) )
-            elif corners == 1:
+                cornerNumber += 1
+                corners.append( (x, y) )
+            elif cornerNumber == 1:
                 print("Top Right Done")
-                corners += 1
-                cornerBoundary.append( (x, y) )
-            elif corners == 2:
+                cornerNumber += 1
+                corners.append( (x, y) )
+            elif cornerNumber == 2:
                 print("Bottom Left Done")
-                corners += 1
-                cornerBoundary.append( (x, y) )
-            elif corners == 3:
+                cornerNumber += 1
+                corners.append( (x, y) )
+            elif cornerNumber == 3:
                 print("Bottom Right Done")
-                corners += 1
-                cornerBoundary.append( (x, y) )
-                print("Corners: ", cornerBoundary)
+                cornerNumber += 1
+                corners.append( (x, y) )
+                print("Corners: ", corners)
 
 
-            if corners < 4: #Show corners
-                print("Corners: ", cornerBoundary)
+            if cornerNumber < 4: #Print list of corner (boundary) points
+                print("Corners: ", corners)
                 
             print("\n")
         #(End 1)
