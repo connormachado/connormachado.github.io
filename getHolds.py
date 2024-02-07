@@ -1,8 +1,11 @@
 from PIL import Image
 import pyautogui
-from pynput.mouse import Listener
+from pynput.mouse import Listener as mouseListener
+from pynput.keyboard import Listener as keyboardListener
 from pynput import mouse
 from pynput import keyboard
+
+
 
 allShapes = [] #The complete list of shapes allShapes = [x,y...]  where x&y = type.Lists
 cornerBoundary = [] #The list for the cornerBoundaries cornerBoundary = [(x,y)...] where x&y = type.Floats
@@ -17,6 +20,29 @@ yPos = [] # Same but for yPositions
 image = Image.open("testImage.jpg")
 image.show()
 
+
+
+
+def on_press(key):
+    try:
+        print("Key Pressed || {0}".format(key))
+    except AttributeError:
+        print("Special Key || {0}".format(key))
+
+
+
+def on_release(key):
+    if key == keyboard.Key.esc:
+        # This will be the last click, to print out the full set of holds
+        # The other two will have autosave stuff in order to be able to map
+        # the whole image over a couple program runs instead of hours of straight work
+        #this AND the other autosave function should have another file that will join the 
+        # two lists into one mega list
+
+        #Use this as the finalSave button
+        #Print allShapes to terminal
+        print(allShapes)
+        return False
 
 
 def on_click(x, y, button, pressed): #Print rounded coordinates (p) store float coordinates (x,y)
@@ -100,11 +126,13 @@ def on_click(x, y, button, pressed): #Print rounded coordinates (p) store float 
             # two lists into one mega list
         #(End 3)
         
-
     
-with Listener(on_click=on_click) as listener:
-    listener.join()
-    
+# Keeps the program running AND can have multiple listeners
+# This took fucking forever omfg dude good shit on this
+# https://stackoverflow.com/questions/45973453/using-mouse-and-keyboard-listeners-together-in-python
+with mouseListener(on_click=on_click) as listener:
+    with keyboardListener(on_press=on_press, on_release=on_release) as listener:
+        listener.join()
 
     
 
