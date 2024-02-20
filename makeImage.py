@@ -1,6 +1,14 @@
 from PIL import Image
 import numpy as np
 
+# For using dicts (3)
+hold = {
+    "tagID": "color probably a hex code stored as a string",
+    "coordinates": []
+}
+
+#NOTE Footchips should maybe be a single point? *left click* *right click*
+
 
 # corners = [(7.69921875, 126.66015625), (750.73828125, 141.1484375), (7.3515625, 1198.34375), (749.37109375, 1214.1796875)]
 
@@ -10,6 +18,9 @@ import numpy as np
 #              [683.44921875, 688.765625, 708.9609375, 716.92578125, 705.72265625], [1004.76171875, 994.62890625, 987.5, 994.05859375, 1004.8125], 
 #              [421.4296875, 448.71875, 442.66015625, 407.5390625], [739.2109375, 757.34765625, 770.06640625, 751.55859375]]
 
+#NOTE BELOW
+# I think i gotta iterate over the shapes and add them into allShapes as a dictionary of tag id and coordinates in a list
+# That way I can fill them in. Maybe coloring each hold differently? And the color IS the tag id??
 def makeMyImage(corners, allShapes):
     # Rounds elems in list "corners" from floats to integers
     for elem in range(len(corners)):
@@ -29,15 +40,15 @@ def makeMyImage(corners, allShapes):
     height = yMax - yMin
 
 
-    #Make empty array of all white pixels
+    # Make empty array of all white pixels
     ar = np.ones(( height, width, 3), dtype = np.uint8)
     image = 255 * ar
 
 
-    # Takes the points clicked by the user and returns an image
-    # Returned image has white background and black lines that go between points
+    # Takes the points clicked by the user and returns updated input img
     def addHold(xPos, yPos, img):
-        #Start the linear extrapolation (2)
+        # Start the linear extrapolation (2)
+        # Fills space where a line between 2 points would go with single points
         for iteration in range(len(xPos) - 1):
             x1 = xPos[iteration + 1]
             x0 = xPos[iteration]
@@ -61,37 +72,41 @@ def makeMyImage(corners, allShapes):
 
 
                 #Add "Thickness"
-                for a in range(-1, 1):
-                    for b in range(-1, 1):
-                        img[y+a][x+b] = (0, 0, 0)
+                # for a in range(-1, 1):
+                #     for b in range(-1, 1):
+                #         img[y+a][x+b] = (0, 0, 0)
 
 
                 #Bruh idk how these are different but bottom one is bolder
-                # img[y][x+1] = (0, 0, 0)
-                # img[y][x] = (0, 0, 0)
-                # img[y][x-1] = (0, 0, 0)        
-                # img[y-1][x+1] = (0, 0, 0)
-                # img[y-1][x] = (0, 0, 0)
-                # img[y-1][x-1] = (0, 0, 0)        
-                # img[y+1][x+1] = (0, 0, 0)
-                # img[y+1][x] = (0, 0, 0)
-                # img[y+1][x-1] = (0, 0, 0)
+                #Add "Thickness"
+                img[y][x+1] = (0, 0, 0)
+                img[y][x] = (0, 0, 0)
+                img[y][x-1] = (0, 0, 0)        
+                img[y-1][x+1] = (0, 0, 0)
+                img[y-1][x] = (0, 0, 0)
+                img[y-1][x-1] = (0, 0, 0)        
+                img[y+1][x+1] = (0, 0, 0)
+                img[y+1][x] = (0, 0, 0)
+                img[y+1][x-1] = (0, 0, 0)
         return img
 
-
-    # Clean and then draw holds
-    # Rounds all floats to integers || Adds one extra point to end of xPos and yPos
-    # Also accounts for offset
-    subtractor = yMin
+    ## Iterating through each list of xpos' and ypos'
+    # Clean (Apply offset) and then draw holds
+    # Rounds all floats to integers
+    offset = yMin
     for elemList in range( len(allShapes) ):
         if elemList%2 == 0:
-            subtractor = xMin
+            offset = xMin
         else:
-            subtractor = yMin
+            offset = yMin
 
-        for elem in range( len(allShapes[elemList]) ): #This code applies the correct x OR y offset to EVERY point
-            allShapes[elemList][elem] = int( round(allShapes[elemList][elem], 0) ) - subtractor
-        allShapes[elemList].append(allShapes[elemList][0]) #Adds in the 'closing' point, so our shape is a polygon and not a snake
+        #This code applies the correct x OR y offset to EVERY point
+        for elem in range( len(allShapes[elemList]) ): 
+            allShapes[elemList][elem] = int( round(allShapes[elemList][elem], 0) ) - offset
+
+
+        #Adds in the 'closing' point, so our shape is a polygon and not a snake
+        allShapes[elemList].append(allShapes[elemList][0]) 
 
 
     # Goes through allShapes and adds each hold to the image
@@ -104,3 +119,5 @@ def makeMyImage(corners, allShapes):
     new_image = Image.fromarray(array)
     new_image.show()
     #new_image.save('test2.png')
+
+    print(img)

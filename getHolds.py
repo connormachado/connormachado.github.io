@@ -12,6 +12,10 @@ from pynput import keyboard
 import makeImage
 
 
+#SUPER NOTE
+# make it so you draw the outline of you and then make an animation of the drawing.
+
+
 
 allShapes = [] #The complete list of shapes allShapes = [x,y...]  where x&y = type.Lists
 corners = [] #The list for the cornerBoundaries corners = [(x,y)...] where x&y = type.Floats
@@ -60,7 +64,7 @@ def on_click(x, y, button, pressed): #Print rounded coordinates (p) store float 
     global cornerNumber, shapeCount
 
     if pressed:
-        #(1)
+        #(a)
         if button == mouse.Button.left:
             # First four clicks go towards corner list
             # Rest of the clicks go towards mapping holds
@@ -97,10 +101,10 @@ def on_click(x, y, button, pressed): #Print rounded coordinates (p) store float 
                 print("Corners: ", corners)
                 
             print("\n")
-        #(End 1)
+        #(End a)
 
 
-        #(2)    
+        #(b)    
         elif button == mouse.Button.right: 
             # print("Fuck yea right click bitch") #First big progress mark, KEEP this line
             
@@ -116,7 +120,9 @@ def on_click(x, y, button, pressed): #Print rounded coordinates (p) store float 
             yPos.clear()
 
             print("Total Shape Count: ", shapeCount)
-        #(End 2)
+
+            #makeImage.makeMyImage(corners, allShapes)
+        #(End b)
 
         
     
